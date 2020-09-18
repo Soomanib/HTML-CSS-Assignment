@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Registration</title>
+		<link rel="stylesheet" type="text/css" href="all.css">
+	</head>
+	<body>
+		<div id="Registration-form-container">
+			<div id="Registration-form">				
+				<header>
+					<p>Register for new leave</p>
+				</header>
+				<section>
+					<form>
+						<input type="text" name="name" id="name" placeholder="Employee Name" autocomplete="off">
+						<input type="text" name="employee-id" id="employee-id" placeholder="Employee ID" autocomplete="off">
+						<input type="text" name="email" id="email" placeholder="Email Address" autocomplete="off">
+						<div><label id="from-date">Start date </label><input type="date" id="start-day" placeholder="start-day" value="start date" autocomplete="off"></div>
+						<div><label id="to-date">End Date</label><input type="date" id="end-day" placeholder="end-date"autocomplete="off"></div>
+						<fieldset id="leave-radio">
+							<legend>Select leave type:</legend>
+							<input type="radio" id="custom" name="leave-type" value="Custom Leave" autocomplete="off">Custom Leave<br>
+						    <input type="radio" id="sick" name="leave-type" value="Sick Leave" autocomplete="off">Sick Leave<br>
+						</fieldset>
+						<input type="file" name="fileToUpload" id="fileToUpload">
+						<input type="submit" value="Save" id="form-submit">
+					</form>
+				</section>
+			</div>
+		</div>
+	</body>
+</html>
