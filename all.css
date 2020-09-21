@@ -76,10 +76,11 @@ input [type="radio"]{
 {
 	width: 30%;
 	margin-left: 35%;
+	cursor: pointer;
 }
 
 #form-submit:hover{
-	border-color: green;
+	background-color: #888;
 }
 
 input:focus{
@@ -91,3 +92,77 @@ input:focus{
 	border: none;
 	margin-top: 10px;
 }
+
+#list-container{
+	display: flex;
+	justify-content: center;
+	height: 100vh;
+}
+
+#list-box{
+	width: 80%;
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+#add-button{
+	height: 150px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-around;
+	flex-direction: column;
+}
+
+#add-button div{
+	width: 80px;
+	height: 80px;
+	padding: 10px;
+	margin: 10px;
+	text-align: center;
+	line-height: 80px;
+	border-radius: 50%;
+	color: white;
+	font-size: 20px;
+	font-style: bold;
+	cursor: pointer;
+	background-color: green;
+}
+
+a{
+	text-decoration: none;
+}
+
+#add-button div:hover{
+	box-shadow: 3px 3px lightgreen;
+}
+
+#list-content{
+	margin-top: 10px;
+}
+
+#list-content table tr:nth-child(odd) {
+  background-color: #eee;
+}
+#list-content table tr:nth-child(even) {
+  background-color: #fff;
+}
+#list-content table tr th {
+  background-color: #999;
+}
+
+#list-content table, #list-content table tr th, #list-content table tr td
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px 15px;
+	border-spacing: 20px;
+	text-align: left;
+}
+
+#list-content table tr th span, #list-content table tr td span
+{
+	cursor: pointer;
+	color: navy;
+} 
