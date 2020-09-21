@@ -1,3 +1,5 @@
-# HTML-CSS-Assignment
+# HTML-CSS-Assignment v1.0
 
-This is a form feature branch to create the form for the leave application
+This release has two pages-  registration form page and list page for all registrations.
+CSS markup is done on a single separate file all.css
+
