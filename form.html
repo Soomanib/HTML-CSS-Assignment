@@ -5,25 +5,25 @@
 		<link rel="stylesheet" type="text/css" href="all.css">
 	</head>
 	<body>
-		<div id="Registration-form-container">
-			<div id="Registration-form">				
+		<div id="RegistrationFormContainer" class="flex-center">
+			<div id="RegistrationForm">				
 				<header>
 					<p>Register for new leave</p>
 				</header>
 				<section>
-					<form action="leave-list.html">
-						<input type="text" name="name" id="name" placeholder="Employee Name" autocomplete="off">
-						<input type="text" name="employee-id" id="employee-id" placeholder="Employee ID" autocomplete="off">
-						<input type="text" name="email" id="email" placeholder="Email Address" autocomplete="off">
-						<div><label id="from-date">Start date </label><input type="date" id="start-day" placeholder="start-day" value="start date" autocomplete="off"></div>
-						<div><label id="to-date">End Date</label><input type="date" id="end-day" placeholder="end-date"autocomplete="off"></div>
-						<fieldset id="leave-radio">
+					<form id="RegistrationFormContent" class="flex-center" action="leave-list.html">
+						<input type="text" name="name" class="text-input" placeholder="Employee Name" autocomplete="off" required>
+						<input type="text" name="employee-id" class="text-input" placeholder="Employee ID" autocomplete="off" required>
+						<input type="text" name="email" class="text-input" placeholder="Email Address" autocomplete="off" required>
+						<div><label id="FromDate">Start date </label><input type="date" class="date-input" autocomplete="off" required></div>
+						<div><label id="ToDate">End Date</label><input type="date" class="date-input" autocomplete="off" required></div>
+						<fieldset id="LeaveRadio">
 							<legend>Select leave type:</legend>
-							<input type="radio" id="custom" name="leave-type" value="Custom Leave" autocomplete="off">Custom Leave<br>
-						    <input type="radio" id="sick" name="leave-type" value="Sick Leave" autocomplete="off">Sick Leave<br>
+							<input type="radio" name="leave-type" class="radio-input" autocomplete="off" required>Custom Leave<br>
+						    <input type="radio" name="leave-type" class="radio-input" autocomplete="off" required>Sick Leave<br>
 						</fieldset>
-						<input type="file" name="fileToUpload" id="fileToUpload">
-						<input type="submit" value="Save" id="form-submit">
+						<input type="file" class="file-input" name="fileToUpload" required>
+						<input type="submit" value="Save" id="FormSubmitButton" required>
 					</form>
 				</section>
 			</div>
