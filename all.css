@@ -154,15 +154,27 @@ a{
 
 #list-content table, #list-content table tr th, #list-content table tr td
 {
-	border: 1px solid black;
 	border-collapse: collapse;
 	padding: 5px 15px;
 	border-spacing: 20px;
 	text-align: left;
 }
 
-#list-content table tr th span, #list-content table tr td span
-{
+#list-content table tr th, #list-content table tr td{
+	border: 1px solid black;
+}
+
+
+#list-content table tr td:last-child{
+	background-color: white;
+	border: none;
+} 
+
+#list-content table tr td span{
+	text-align: center;
+	margin-right: 10px;
+	background-color: #e6dbac;
+	padding: 3px 6px;
 	cursor: pointer;
 	color: navy;
-} 
+}
