@@ -1,19 +1,26 @@
 body{
 	margin: none;
 	padding: none;
-	font: sans-serif;
-	
+	font: sans-serif;	
 }
 
-#Registration-form-container{
+a{
+	text-decoration: none;
+}
+
+.flex-center{
 	display: flex;
+	flex-direction: column;
+}
+
+#RegistrationFormContainer{
 	height: 100vh;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
 	background-color: powderblue;
 }
 
-#Registration-form{
+#RegistrationForm{
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 	width: 400px;
@@ -24,7 +31,7 @@ body{
 	border-radius: 80px; 
 }
 
-#Registration-form header{
+#RegistrationForm header{
 	text-align: center;
 	font-weight: bold;
 	font-size: 20px;
@@ -34,9 +41,7 @@ body{
 	border-top-left-radius: 30px;
 }
 
-#Registration-form section form{
-	display: flex;
-	flex-direction: column;
+#RegistrationFormContent{
 	font-size: 14px;
 	padding: 5%;
 }
@@ -49,77 +54,84 @@ input{
 	border-radius: 8px; 
 }
 
-input [type = text]{
+.text-input:focus, .date-input:focus{
+	border:none;
+	background-color: #FFFDD0;
+	outline: none;
+}
+
+
+.text-input{
+	margin-left: 2%;
+	width: 90%;
+}
+
+.date-input{
 	width: 70%;
+	cursor: text;
 }
 
-#to-date{
-	padding-right: 20px;
-	padding-left: 10px;
-}
-
-#from-date{
-	padding-right: 15px;
-	padding-left: 10px;
-}
-
-input[type = date]{
-	width: 70%;
-}
-
-input [type="radio"]{
+.radio-input{
 	margin-left: 10%;
 	color: red;
 }
 
-#form-submit
+.file-input:focus{
+	border:none;
+	outline: none;
+}
+
+#ToDate{
+	padding-right: 20px;
+	padding-left: 10px;
+}
+
+#FromDate{
+	padding-right: 15px;
+	padding-left: 10px;
+}
+
+#LeaveRadio{
+	border: none;
+	margin-top: 10px;
+}
+
+#FormSubmitButton
 {
 	width: 30%;
 	margin-left: 35%;
 	cursor: pointer;
 }
 
-#form-submit:hover{
+#FormSubmitButton:hover{
 	background-color: #888;
 }
 
-input:focus{
-	border:none;
-	background-color: #FFFDD0;
-}
 
-#leave-radio{
-	border: none;
-	margin-top: 10px;
-}
-
-#list-container{
+#ListContainer{
 	display: flex;
 	justify-content: center;
 	height: 100vh;
 }
 
-#list-box{
+#ListBox{
 	width: 80%;
 	margin-top: 50px;
-	display: flex;
-	flex-direction: column;
 	justify-content: flex-start;
 }
 
-#add-button{
+#AddButtonContainer{
 	height: 150px;
-	display: flex;
 	align-items: flex-end;
 	justify-content: space-around;
-	flex-direction: column;
 }
 
-#add-button div{
+#AddButton{
 	width: 80px;
 	height: 80px;
 	padding: 10px;
 	margin: 10px;
+	margin-right: 70px;
 	text-align: center;
 	line-height: 80px;
 	border-radius: 50%;
@@ -130,29 +142,35 @@ input:focus{
 	background-color: green;
 }
 
-a{
-	text-decoration: none;
-}
-
-#add-button div:hover{
+#AddButton:hover{
 	box-shadow: 3px 3px lightgreen;
 }
 
-#list-content{
+
+#ListContent{
 	margin-top: 10px;
 }
 
-#list-content table tr:nth-child(odd) {
+.table-caption{
+	font-size: 20px;
+	color: #022d36;
+	margin-bottom: 20px;
+	font-style: bold;
+}
+
+.leave-table-body:nth-child(even) {
   background-color: #eee;
 }
-#list-content table tr:nth-child(even) {
+
+.leave-table-body:nth-child(odd) {
   background-color: #fff;
 }
-#list-content table tr th {
+
+.leave-table-head{
   background-color: #999;
 }
 
-#list-content table, #list-content table tr th, #list-content table tr td
+#LeaveTable, .leave-table-head th, .leave-table-body td
 {
 	border-collapse: collapse;
 	padding: 5px 15px;
@@ -160,21 +178,25 @@ a{
 	text-align: left;
 }
 
-#list-content table tr th, #list-content table tr td{
+.leave-table-head th, .leave-table-body td{
 	border: 1px solid black;
 }
 
+.leave-table-img
+{
+	height: 50px;
+	width: 50px;
+	cursor: pointer;
+}
 
-#list-content table tr td:last-child{
-	background-color: white;
-	border: none;
-} 
-
-#list-content table tr td span{
+.edit-delete-button{
 	text-align: center;
 	margin-right: 10px;
-	background-color: #e6dbac;
 	padding: 3px 6px;
 	cursor: pointer;
 	color: navy;
+}
+
+.edit-delete-button:hover{
+	background-color: #bbb;
 }
