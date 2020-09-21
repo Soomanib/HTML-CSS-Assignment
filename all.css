@@ -1,0 +1,168 @@
+body{
+	margin: none;
+	padding: none;
+	font: sans-serif;
+	
+}
+
+#Registration-form-container{
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	background-color: powderblue;
+}
+
+#Registration-form{
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	width: 400px;
+	height: 550px;
+	background-color: black;
+	color: white;
+	opacity: 0.9;
+	border-radius: 80px; 
+}
+
+#Registration-form header{
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 5px;
+	background-color: #800000;
+	border-top-right-radius: 30px;
+	border-top-left-radius: 30px;
+}
+
+#Registration-form section form{
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+	padding: 5%;
+}
+
+
+input{
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 3px; 
+	border-radius: 8px; 
+}
+
+input [type = text]{
+	width: 70%;
+}
+
+#to-date{
+	padding-right: 20px;
+	padding-left: 10px;
+}
+
+#from-date{
+	padding-right: 15px;
+	padding-left: 10px;
+}
+
+input[type = date]{
+	width: 70%;
+}
+
+input [type="radio"]{
+	margin-left: 10%;
+	color: red;
+}
+
+#form-submit
+{
+	width: 30%;
+	margin-left: 35%;
+	cursor: pointer;
+}
+
+#form-submit:hover{
+	background-color: #888;
+}
+
+input:focus{
+	border:none;
+	background-color: #FFFDD0;
+}
+
+#leave-radio{
+	border: none;
+	margin-top: 10px;
+}
+
+#list-container{
+	display: flex;
+	justify-content: center;
+	height: 100vh;
+}
+
+#list-box{
+	width: 80%;
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+#add-button{
+	height: 150px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-around;
+	flex-direction: column;
+}
+
+#add-button div{
+	width: 80px;
+	height: 80px;
+	padding: 10px;
+	margin: 10px;
+	text-align: center;
+	line-height: 80px;
+	border-radius: 50%;
+	color: white;
+	font-size: 20px;
+	font-style: bold;
+	cursor: pointer;
+	background-color: green;
+}
+
+a{
+	text-decoration: none;
+}
+
+#add-button div:hover{
+	box-shadow: 3px 3px lightgreen;
+}
+
+#list-content{
+	margin-top: 10px;
+}
+
+#list-content table tr:nth-child(odd) {
+  background-color: #eee;
+}
+#list-content table tr:nth-child(even) {
+  background-color: #fff;
+}
+#list-content table tr th {
+  background-color: #999;
+}
+
+#list-content table, #list-content table tr th, #list-content table tr td
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px 15px;
+	border-spacing: 20px;
+	text-align: left;
+}
+
+#list-content table tr th span, #list-content table tr td span
+{
+	cursor: pointer;
+	color: navy;
+} 
