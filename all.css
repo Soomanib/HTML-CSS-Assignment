@@ -120,30 +120,39 @@ input{
 	justify-content: flex-start;
 }
 
+#FilterNames {
+	width: 94%; 
+	font-size: 16px; 
+	padding: 12px 20px 12px 40px;
+	border: 1px solid #ddd; 
+	margin-bottom: 12px; 
+  }
+
 #AddButtonContainer{
 	height: 150px;
-	align-items: flex-end;
-	justify-content: space-around;
+	display: flex;
+	justify-content: center;
+	align-content: center;
 }
 
-#AddButton{
-	width: 80px;
-	height: 80px;
-	padding: 10px;
-	margin: 10px;
-	margin-right: 70px;
+.all-button{
+	width: 200px;
+	height: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 50px;
 	text-align: center;
-	line-height: 80px;
-	border-radius: 50%;
+	line-height: 50px;
 	color: white;
-	font-size: 20px;
+	font-size: 16px;
 	font-style: bold;
 	cursor: pointer;
 	background-color: green;
+	border: 1px solid black;
 }
 
-#AddButton:hover{
-	box-shadow: 3px 3px lightgreen;
+.all-button:hover{
+	box-shadow: 5px 5px lightgreen;
 }
 
 
