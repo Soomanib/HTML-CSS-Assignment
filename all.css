@@ -109,7 +109,7 @@ input{
 
 
 #ListContainer{
-	display: flex;
+	display: none;
 	justify-content: center;
 	height: 100vh;
 }
