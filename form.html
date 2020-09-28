@@ -8,22 +8,22 @@
 		<div id="RegistrationFormContainer" class="flex-center">
 			<div id="RegistrationForm">				
 				<header>
-					<p>Register for new leave</p>
+					<p id="LeaveTableHeadText">Register For New Leave</p>
 				</header>
 				<section>
 					<form id="RegistrationFormContent" class="flex-center">
 						<input type="text" name="name" class="text-input" placeholder="Employee Name" autocomplete="off" required>
 						<input type="text" name="employee-id" class="text-input" placeholder="Employee ID" autocomplete="off" required>
 						<input type="text" name="email" class="text-input" placeholder="Email Address" autocomplete="off" required>
-						<div><label id="FromDate">Start date </label><input type="date" class="date-input" autocomplete="off" required></div>
+						<div><label id="FromDate">Start date </label><input type="date" class="date-input"  autocomplete="off" required></div>
 						<div><label id="ToDate">End Date</label><input type="date" class="date-input" autocomplete="off" required></div>
 						<fieldset id="LeaveRadio">
 							<legend>Select leave type:</legend>
-							<input type="radio" name="leave-type" class="radio-input" value = "Custom" required>Custom Leave<br>
-						    <input type="radio" name="leave-type" class="radio-input" value = "Sick" required>Sick Leave<br>
+							<input type="radio" name="leave-type" class="radio-input" id="CustomLeaveType" value = "Custom" autocomplete="off" required>Custom Leave<br>
+						    <input type="radio" name="leave-type" class="radio-input" id="SickLeaveType" value = "Sick" autocomplete="off" required>Sick Leave<br>
 						</fieldset>
-						<input type="file" class="file-input" name="fileToUpload" required>
-						<input type="button" value="Save" id="FormSubmitButton" required>
+						<input type="file" class="file-input" name="fileToUpload" autocomplete="off" required>
+						<input type="button" value="Save" id="FormSubmitButton" autocomplete="off" required>
 					</form>
 				</section>
 			</div>
