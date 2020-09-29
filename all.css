@@ -148,17 +148,17 @@ input{
 }
 
 #FilterNames {
-	width: 90%; 
+	width: 80%; 
 	font-size: 16px; 
-	padding: 12px 10px 12px 40px;
+	padding: 12px 10px 12px 20px;
 	border: 1px solid #ddd; 
-	margin-bottom: 12px; 
+	margin-bottom: 10px; 
   }
 
 #AddButtonContainer{
 	height: auto;
 	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-end;
@@ -186,11 +186,12 @@ input{
 }
 
 #ListContent{
-	margin-top: 50px;
+	margin-top: 10px;
 }
 
 .caption{
 	margin-bottom: 20px;
+	margin-left: 10px;
 }
 
 .leave-table-body:nth-child(even) {
@@ -220,6 +221,7 @@ input{
 .leave-table-head th, .leave-table-body td{
 	border-collapse: collapse;
 	border: 1px solid black;
+	min-width: 80px;
 }
 
 .header-with-sort{

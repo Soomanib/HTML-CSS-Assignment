@@ -45,6 +45,8 @@ function bindEventListeners(){
     document.getElementById("FormSubmitButton").addEventListener( "click", updateLeaveInformation );
     document.getElementById("FormCancelButton").addEventListener( "click", cancelLeaveInformation );
     document.getElementById("AddButton").addEventListener( "click", showRegistrationPage );
+    document.getElementById("File").addEventListener( "change", loadFile );
+    
     document.getElementById("SortByID").addEventListener( "click", function(){
         sortTable( SORTID, ASC );
         currentSortBy = SORTID;
@@ -413,6 +415,9 @@ function showListPage(){
 }
 
 function showRegistrationPage(){
+    //no image preview
+    document.getElementById("PreviewImage").src = IMAGE;
+
     //show registration page
     document.getElementById("RegistrationFormContent").reset();
     document.getElementById("ListContainer").style.display = "none";
@@ -522,3 +527,11 @@ function sortTable( sortBy, sortMode ){
     
 }
 
+let loadFile = function(event) {
+    let reader = new FileReader();
+    reader.onload = function(){
+      let output = document.getElementById('PreviewImage');
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
