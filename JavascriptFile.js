@@ -218,9 +218,6 @@ function placeHolder(row){
     filePath = imageFile.src;
     fileName = filePath.split('\\').pop().split('/').pop();
 
-    //file do it later
-    //formData.elements[8].value = fileName; //file
-
     //radio-button
     if(intialStoreArray[6] == "Sick")
     {
@@ -233,14 +230,9 @@ function placeHolder(row){
 }
 
 function editSubmitClicked(row, callerFunction){
-
-    //change row values
-    //get employee information from form
     let employeeInformation = getEmployeeInformation();
     let columnData;
     let filePath;
-
-    //check if form is validated
 
     if( formValidated(employeeInformation) ){
         for(i=0; i<7; i++)
@@ -313,7 +305,6 @@ function sortTable( n, mode ) {
         }
       }
 
-
       if (shouldSwitch) {
         rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
@@ -321,25 +312,3 @@ function sortTable( n, mode ) {
     }
   }
 
-
-//search function
-
-function filterNames() {
-    let input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("FilterNames");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("LeaveTableRowContainer");
-    tr = table.getElementsByTagName("tr");
-  
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[1];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
-  }

@@ -18,13 +18,14 @@ a{
 	align-items: center;
 	justify-content: center;
 	background-color: powderblue;
+	display: none;
 }
 
 #RegistrationForm{
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 	width: 400px;
-	height: 550px;
+	height: 650px;
 	background-color: black;
 	color: white;
 	opacity: 0.9;
@@ -49,10 +50,22 @@ a{
 
 input{
 	padding: 10px;
-	margin-top: 5px;
-	margin-bottom: 3px; 
 	border-radius: 8px; 
+	margin-bottom:3px;
+	margin-top: 0px;
 }
+
+.ErrorMessage{
+	color: red;
+	font-size: 12px;
+	border: none;
+	margin-top: none;
+	margin-bottom: 10px;
+	margin-right: none;
+	margin-left: 20px;
+}
+
+
 
 .text-input:focus, .date-input:focus{
 	border:none;
@@ -60,6 +73,12 @@ input{
 	outline: none;
 }
 
+#PreviewImage{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	border: 0px;
+}
 
 .text-input{
 	margin-left: 2%;
@@ -74,6 +93,10 @@ input{
 .radio-input{
 	margin-left: 10%;
 	color: red;
+}
+
+.file-input{
+	display: inline-block;
 }
 
 .file-input:focus{
@@ -93,23 +116,26 @@ input{
 
 #LeaveRadio{
 	border: none;
-	margin-top: 10px;
 }
 
-#FormSubmitButton
-{
-	width: 30%;
-	margin-left: 35%;
-	cursor: pointer;
+.button-container{
+	text-align: center;
 }
 
-#FormSubmitButton:hover{
+.form-button{
+	display: inline-block;
+	width: 20%;
+	height: 30px;
+	cursor: pointer;	
+}
+
+.form-button:hover{
 	background-color: #888;
 }
 
 
 #ListContainer{
-	display: none;
+	display: flex;
 	justify-content: center;
 	height: 100vh;
 }
@@ -118,10 +144,11 @@ input{
 	width: 80%;
 	margin-top: 50px;
 	justify-content: flex-start;
+	align-items: center;
 }
 
 #FilterNames {
-	width: 94%; 
+	width: 90%; 
 	font-size: 16px; 
 	padding: 12px 10px 12px 40px;
 	border: 1px solid #ddd; 
@@ -134,39 +161,36 @@ input{
 	margin-bottom: 20px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: flex-end;
 	align-content: center;
 }
 
 .all-button{
-	width: 200px;
-	height: 50px;
-	padding-left: 10px;
-	padding-right: 10px;
+	width: 80px;
+	height: 80px;
+	padding: 10px;
+	margin: 10px;
+	margin-right: 70px;
 	text-align: center;
-	line-height: 50px;
+	line-height: 80px;
+	border-radius: 50%;
 	color: white;
-	font-size: 16px;
+	font-size: 20px;
 	font-style: bold;
 	cursor: pointer;
 	background-color: green;
-	border: 1px solid black;
 }
 
 .all-button:hover{
 	box-shadow: 5px 5px lightgreen;
 }
 
-
 #ListContent{
 	margin-top: 50px;
 }
 
-.table-caption{
-	font-size: 20px;
-	color: #022d36;
+.caption{
 	margin-bottom: 20px;
-	font-style: bold;
 }
 
 .leave-table-body:nth-child(even) {
@@ -177,20 +201,54 @@ input{
   background-color: #fff;
 }
 
+#LeaveTable
+{
+	border-spacing: 0ch;
+	align-self: center;
+}
+
 .leave-table-head{
   background-color: #999;
 }
 
-#LeaveTable, .leave-table-head th, .leave-table-body td
-{
+#LeaveTable, .leave-table-head th, .leave-table-body td{
 	border-collapse: collapse;
 	padding: 5px 15px;
-	border-spacing: 20px;
 	text-align: left;
 }
 
 .leave-table-head th, .leave-table-body td{
+	border-collapse: collapse;
 	border: 1px solid black;
+}
+
+.header-with-sort{
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	height: fit-content;
+}
+
+
+.sort-button{
+	cursor: pointer;
+	margin-left: 15px;
+	min-width: 15px;
+	min-height: 10px;
+}
+
+.asc{
+	background-image: url("black-triangle-up.png");	
+	margin-bottom: 1px;
+}
+
+.desc{
+	background-image: url("black-triangle-down.png");
+}
+
+.asc, .desc{
+	background-size: 70%;
+	background-repeat: no-repeat;
 }
 
 .leave-table-img
