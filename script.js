@@ -1,15 +1,20 @@
 const NOMODE = 0;
 
-const ASC = 1;
-const DESC = 2;
+const ASC = true;
+const DESC = false;
 
-const SORTID = 1;
-const SORTCOUNT = 2;
+const SORTID = true;
+const SORTCOUNT = false;
 
-const EDITMODE = 1;
-const REGISTRATIONMODE = 2;
+const EDITMODE = true;
+const REGISTRATIONMODE = false;
 
-const IMAGE = "image.png"
+const IMAGEPREVIEW = true;
+const NOIMAGEPREVIEW = false;
+
+const IMAGE = "resources/defaultPreview.png"
+
+const relativeLeaveImagePath = "leaveImages/"
 
 const EMAILREGX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -19,6 +24,7 @@ let currentMode = NOMODE;
 let currentSortBy = NOMODE;
 let editMode = REGISTRATIONMODE;
 let callerFunctionEdit;
+let imagePreview = NOIMAGEPREVIEW; //default image preview is false
 
 const tableHeads = {
     ID: 0,
@@ -30,14 +36,11 @@ const tableHeads = {
     LEAVETYPE: 6,
     FILE: 7,
     EDITDELETE: 8
- };
+};
 
- Object.freeze(tableHeads);
+Object.freeze(tableHeads);
 
-
-
-window.addEventListener('load', bindEventListeners
-);
+window.addEventListener('load', bindEventListeners);
 
 function bindEventListeners(){
     console.log("The window has been fully loaded");
@@ -46,31 +49,51 @@ function bindEventListeners(){
     document.getElementById("FormCancelButton").addEventListener( "click", cancelLeaveInformation );
     document.getElementById("AddButton").addEventListener( "click", showRegistrationPage );
     document.getElementById("File").addEventListener( "change", loadFile );
-    
+
     document.getElementById("SortByID").addEventListener( "click", function(){
         sortTable( SORTID, ASC );
         currentSortBy = SORTID;
         currentMode = ASC;
         renderLeaveObjectsOnListPage();
     } );
+
     document.getElementById("SortByIdDesc").addEventListener( "click",  function(){
         sortTable( SORTID, DESC );
         currentSortBy = SORTID;
         currentMode = DESC;
         renderLeaveObjectsOnListPage();
     } );
+
     document.getElementById("SortByDayCount").addEventListener( "click", function(){
         sortTable( SORTCOUNT, ASC );
         currentSortBy = SORTCOUNT;
         currentMode = ASC;
         renderLeaveObjectsOnListPage();
     } );
+
     document.getElementById("SortByDayCountDesc").addEventListener( "click", function(){
         sortTable( SORTCOUNT, DESC );
         currentSortBy = SORTCOUNT;
         currentMode = DESC;
         renderLeaveObjectsOnListPage();
     } );
+}
+
+function cancelLeaveInformation(){
+    let errorMessageElements = document.getElementsByClassName("ErrorMessage");
+    let i;
+
+    if( editMode === EDITMODE ){
+        changeFormPropertiesToRegister(callerFunctionEdit);
+    }
+
+    for (i = 0; i < errorMessageElements.length; i++) {
+        errorMessageElements[i].innerHTML = "";
+    }
+
+    sortTable( currentSortBy, currentMode );
+    renderLeaveObjectsOnListPage();
+    showListPage();
 }
 
 function updateLeaveInformation(){
@@ -87,6 +110,14 @@ function updateLeaveInformation(){
     }
 }
 
+function updateLeaveObjectArrayToShow(){
+    leaveObjectArrayToShow = [];
+
+    for(let i = 0; i < leaveObjectArray.length; i++)
+    {
+        leaveObjectArrayToShow.push(i);
+    }
+}
 
 function renderLeaveObjectsOnListPage(){    
     let employeeLeaveInformation;
@@ -104,6 +135,7 @@ function renderLeaveObjectsOnListPage(){
 }
 
 function showInformationOnTable(employeeLeaveInformation){
+    //In this function table row is created
     let table = document.getElementById("LeaveTableRowContainer");
     let rowCount = table.rows.length;
     let row = table.insertRow(rowCount);
@@ -141,22 +173,6 @@ function showInformationOnTable(employeeLeaveInformation){
     editButton.setAttribute("onclick", "editInformation(this)");
 }
 
-function cancelLeaveInformation(){
-    if( editMode === EDITMODE )
-        changeFormPropertiesToRegister(callerFunctionEdit);
-
-    let errorMessageElements = document.getElementsByClassName("ErrorMessage");
-    let i;
-    for (i = 0; i < errorMessageElements.length; i++) {
-        errorMessageElements[i].innerHTML = "";
-    }
-
-    sortTable( currentSortBy, currentMode );
-    renderLeaveObjectsOnListPage();
-    showListPage();
-}
-
-
 function editInformation(editButton){
     let row = editButton.parentNode.parentNode;
     changeFormPropertiesToEdit(row); 
@@ -167,6 +183,9 @@ function editInformation(editButton){
 function changeFormPropertiesToEdit(row){
     //change edit mode
     editMode = EDITMODE;    
+
+    //set image preview to true
+    imagePreview = IMAGEPREVIEW;
 
     //change form header text
     document.getElementById("LeaveTableHeadText").innerHTML = "Edit Leave Information";
@@ -182,8 +201,16 @@ function changeFormPropertiesToEdit(row){
 function updateEditedInformation(row, callerFunction){
     let showArrayRowIndex = row.rowIndex - 1;
     let leaveObjectRowIndex = leaveObjectArrayToShow[showArrayRowIndex];
+    let existedLeaveObject = leaveObjectArray[leaveObjectRowIndex];
+    let previewImageFile = existedLeaveObject.file;
     let leaveInformation = createLeaveObject();   
-    let isValidated = formValidation(leaveInformation);
+    let isValidated;
+
+    if(imagePreview){
+        leaveInformation.file = previewImageFile;
+    }
+    
+    isValidated = formValidation(leaveInformation);
     
     if(isValidated)
     {
@@ -194,8 +221,6 @@ function updateEditedInformation(row, callerFunction){
         showListPage();
     }
 }
-
-
 
 function changeFormPropertiesToRegister(callerFunction){
     //change edit mode
@@ -217,6 +242,7 @@ function changeFormPropertiesToRegister(callerFunction){
 
     //no image preview
     document.getElementById("PreviewImage").src = IMAGE;
+    imagePreview = NOIMAGEPREVIEW;
 };
 
 function placeHolder(row){
@@ -245,6 +271,21 @@ function placeHolder(row){
 
 }
 
+function showListPage(){
+    document.getElementById("ListContainer").style.display = "flex";
+    document.getElementById("RegistrationFormContainer").style.display = "none";
+}
+
+function showRegistrationPage(){
+    //show default image preview
+    document.getElementById("PreviewImage").src = IMAGE;
+
+    //show registration page
+    document.getElementById("RegistrationFormContent").reset();
+    document.getElementById("ListContainer").style.display = "none";
+    document.getElementById("RegistrationFormContainer").style.display = "flex";
+}
+
 function deleteInformation(deleteButton){
 
     let row = deleteButton.parentNode.parentNode;
@@ -268,15 +309,6 @@ function deleteFromLeaveObject(index)
     leaveObjectArray.pop();
 }
 
-function updateLeaveObjectArrayToShow(){
-    leaveObjectArrayToShow = [];
-
-    for(let i = 0; i < leaveObjectArray.length; i++)
-    {
-        leaveObjectArrayToShow.push(i);
-    }
-}
-
 function createLeaveObject()
 {
     let leaveInformation = new Object();
@@ -295,7 +327,7 @@ function createLeaveObject()
     }
 
     filePath = document.getElementById("File").value;
-    fileName = filePath.split('\\').pop().split('/').pop();
+    fileName = relativeLeaveImagePath + filePath.split('\\').pop().split('/').pop();
 
     leaveInformation.id = document.getElementById("EmployeeId").value;
     leaveInformation.name = document.getElementById("Name").value;
@@ -380,7 +412,7 @@ function formValidation(leaveInformation){
         document.getElementById("LeaveTypeError").innerHTML  = "";
     }
 
-    if( !leaveInformation.file )
+    if( ( !leaveInformation.file ) && ( !imagePreview ) )
     {
         document.getElementById("FileError").innerHTML  = "This field cannot be empty";
         isValidated = false;
@@ -405,23 +437,9 @@ function formValidation(leaveInformation){
     return isValidated;
 }
 
+
 function addLeaveObjectToArray(leaveInformation){
     leaveObjectArray.push(leaveInformation);
-}
-
-function showListPage(){
-    document.getElementById("ListContainer").style.display = "flex";
-    document.getElementById("RegistrationFormContainer").style.display = "none";
-}
-
-function showRegistrationPage(){
-    //no image preview
-    document.getElementById("PreviewImage").src = IMAGE;
-
-    //show registration page
-    document.getElementById("RegistrationFormContent").reset();
-    document.getElementById("ListContainer").style.display = "none";
-    document.getElementById("RegistrationFormContainer").style.display = "flex";
 }
 
 let date_diff_indays = function(date1, date2) {
@@ -530,8 +548,11 @@ function sortTable( sortBy, sortMode ){
 let loadFile = function(event) {
     let reader = new FileReader();
     reader.onload = function(){
-      let output = document.getElementById('PreviewImage');
-      output.src = reader.result;
+        let output = document.getElementById('PreviewImage');
+        output.src = reader.result;
+
+        //when file is loaded previous image preview changed to file upload
+        imagePreview = NOIMAGEPREVIEW;
     };
     reader.readAsDataURL(event.target.files[0]);
   };
