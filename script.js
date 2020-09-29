@@ -412,7 +412,7 @@ function formValidation(leaveInformation){
         document.getElementById("LeaveTypeError").innerHTML  = "";
     }
 
-    if( ( !leaveInformation.file ) && ( !imagePreview ) )
+    if( leaveInformation.file === relativeLeaveImagePath )
     {
         document.getElementById("FileError").innerHTML  = "This field cannot be empty";
         isValidated = false;
